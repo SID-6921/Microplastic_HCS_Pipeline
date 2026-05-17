@@ -186,7 +186,9 @@ def train_logistic_regression(x_train, y_train, x_test):
     process = psutil.Process()
     process.memory_info()
     
-    model = LogisticRegression(max_iter=1000, random_state=SEED, multi_class='multinomial')
+    # Some sklearn versions may not accept the 'multi_class' kwarg; select a
+    # solver that supports multiclass via the solver parameter for compatibility.
+    model = LogisticRegression(max_iter=1000, random_state=SEED, solver='lbfgs')
     model.fit(x_train, y_train)
     
     train_time = time.time() - start_time
