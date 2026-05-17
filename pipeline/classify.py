@@ -26,10 +26,10 @@ from torch import nn
 from torch.utils.data import DataLoader, Dataset
 from torchvision import models
 
-from data_loader import simulate_bbbc014_dataset
-from detect import detect_nuclei, measure_cell_morphology
-from features import compute_features
-from preprocess import clean_image, normalize_image, resize_image
+from pipeline.data_loader import simulate_bbbc014_dataset
+from pipeline.detect import detect_nuclei, measure_cell_morphology
+from pipeline.features import compute_features
+from pipeline.preprocess import clean_image, normalize_image, resize_image
 
 SEED = 42
 BATCH_SIZE = 16
