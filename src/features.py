@@ -6,6 +6,7 @@ import numpy as np
 
 def compute_features(
     image_id: str,
+    class_id: int,
     class_name: str,
     dapi_channel: np.ndarray,
     pi_channel: np.ndarray,
@@ -85,6 +86,7 @@ def compute_features(
     
     return {
         "image_id": image_id,
+            "class_id": class_id,
         "class_name": class_name,
         # NEW apoptosis-specific (4)
         "nuclear_fragmentation_index": nuclear_fragmentation_index,

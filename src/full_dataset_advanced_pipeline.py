@@ -165,6 +165,7 @@ def preprocess_and_extract_features(
         # Compute features
         feature_dict = compute_features(
             image_id=row["image_id"],
+                class_id=row["class_id"],
             class_name=row["class_name"],
             dapi_channel=dapi,
             pi_channel=pi,
