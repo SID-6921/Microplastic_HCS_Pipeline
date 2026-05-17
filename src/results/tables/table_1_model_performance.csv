@@ -1,0 +1,6 @@
+Model,Accuracy,AUC
+Logistic Regression,0.9,0.99
+Random Forest,1.0,1.0
+CNN Scratch (fallback RF),1.0,1.0
+ResNet-18 Scratch (fallback RF),1.0,1.0
+ResNet-18 Pretrained (fallback RF),1.0,1.0
