@@ -421,31 +421,31 @@ def run_full_pipeline(output_dir: Path = Path("results")) -> dict:
     print("  >> Logistic Regression...", end=" ")
     result = train_logistic_regression(x_train, y_train, x_test)
     model_results.append(result)
-    print(f"[OK] ({result.train_time:.2f}s)")
+    print(f"[OK] ({result.train_time_sec:.2f}s)")
     
     # Model 2: Random Forest
     print("  >> Random Forest...", end=" ")
     result = train_random_forest(x_train, y_train, x_test)
     model_results.append(result)
-    print(f"[OK] ({result.train_time:.2f}s)")
+    print(f"[OK] ({result.train_time_sec:.2f}s)")
     
     # Model 3: CNN Scratch
     print("  >> CNN (scratch)...", end=" ")
     result = train_cnn_scratch(x, y, x_test, n_classes)
     model_results.append(result)
-    print(f"[OK] ({result.train_time:.2f}s)")
+    print(f"[OK] ({result.train_time_sec:.2f}s)")
     
     # Model 4: ResNet-18 Scratch
     print("  >> ResNet-18 (scratch)...", end=" ")
     result = train_resnet18(x, y, x_test, n_classes, pretrained=False)
     model_results.append(result)
-    print(f"[OK] ({result.train_time:.2f}s)")
+    print(f"[OK] ({result.train_time_sec:.2f}s)")
     
     # Model 5: ResNet-18 Pretrained
     print("  >> ResNet-18 (ImageNet pretrained)...", end=" ")
     result = train_resnet18(x, y, x_test, n_classes, pretrained=True)
     model_results.append(result)
-    print(f"[OK] ({result.train_time:.2f}s)")
+    print(f"[OK] ({result.train_time_sec:.2f}s)")
     
     print("\n[4/6] Running 13 statistical validations...")
     
@@ -491,7 +491,7 @@ def run_full_pipeline(output_dir: Path = Path("results")) -> dict:
             "Accuracy CI": f"[{acc_ci[0]:.3f}, {acc_ci[1]:.3f}]",
             "AUC": f"{results_summary[model_result.name]['auc']:.3f}",
             "AUC CI": f"[{auc_ci[0]:.3f}, {auc_ci[1]:.3f}]",
-            "Train Time (s)": f"{model_result.train_time:.2f}",
+            "Train Time (s)": f"{model_result.train_time_sec:.2f}",
             "Peak Memory (MB)": f"{model_result.peak_memory_mb:.1f}",
         })
     
