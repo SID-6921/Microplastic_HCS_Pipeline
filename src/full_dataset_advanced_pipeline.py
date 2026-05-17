@@ -186,9 +186,19 @@ def train_logistic_regression(x_train, y_train, x_test):
     process = psutil.Process()
     process.memory_info()
     
-    # Some sklearn versions may not accept the 'multi_class' kwarg; select a
-    # solver that supports multiclass via the solver parameter for compatibility.
-    model = LogisticRegression(max_iter=1000, random_state=SEED, solver='lbfgs')
+    # Construct LogisticRegression with kwargs supported by the installed sklearn.
+    from inspect import signature
+    sig = signature(LogisticRegression.__init__)
+    accepted = set(sig.parameters.keys())
+    lr_kwargs = {}
+    if 'max_iter' in accepted:
+        lr_kwargs['max_iter'] = 1000
+    if 'random_state' in accepted:
+        lr_kwargs['random_state'] = SEED
+    if 'solver' in accepted:
+        lr_kwargs['solver'] = 'lbfgs'
+
+    model = LogisticRegression(**lr_kwargs)
     model.fit(x_train, y_train)
     
     train_time = time.time() - start_time
