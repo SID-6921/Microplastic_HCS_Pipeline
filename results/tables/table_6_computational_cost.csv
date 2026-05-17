@@ -1,0 +1,6 @@
+Model,Train_Time_s
+Logistic Regression,0.0
+Random Forest,0.4
+CNN (scratch),12.4
+ResNet-18 (scratch),38.7
+ResNet-18 (pretrained),52.1

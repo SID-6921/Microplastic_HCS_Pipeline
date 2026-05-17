@@ -32,14 +32,16 @@ ENV/
 *.swo
 *~
 
-# Data and results (keep structure, exclude large files)
+# Data and results (keep structure, exclude large raw files)
 data/raw/images/*.npy
 data/raw/images/*.png
 data/raw/images/*.tif
 data/processed/**/*.npy
 data/processed/**/*.png
-results/figures/*.png
-results/tables/*.csv
+# Allow MS2 manuscript figures and tables
+!results/figures/fig_*.png
+!results/figures/supp_*.png
+!results/tables/table_*.csv
 
 # Model weights
 models/*.pt
@@ -47,7 +49,8 @@ models/*.pth
 
 # Jupyter
 .ipynb_checkpoints/
-*.ipynb
+# Allow manuscript notebook
+!notebooks/*.ipynb
 
 # OS
 .DS_Store

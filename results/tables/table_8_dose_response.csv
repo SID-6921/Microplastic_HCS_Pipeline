@@ -1,0 +1,10 @@
+Cell_Death_Class,MP_Type,Spearman_rho,p_value
+Early Apoptosis,Polystyrene (PS),1.000,0.0000e+00
+Early Apoptosis,Polyethylene (PE),1.000,0.0000e+00
+Early Apoptosis,PET,1.000,0.0000e+00
+Late Apoptosis,Polystyrene (PS),1.000,0.0000e+00
+Late Apoptosis,Polyethylene (PE),1.000,0.0000e+00
+Late Apoptosis,PET,1.000,0.0000e+00
+Necrosis,Polystyrene (PS),1.000,0.0000e+00
+Necrosis,Polyethylene (PE),1.000,0.0000e+00
+Necrosis,PET,1.000,0.0000e+00
