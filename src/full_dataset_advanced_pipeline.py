@@ -70,6 +70,14 @@ class ModelResult:
     peak_memory_mb: float
     used_pretrained: bool = False
 
+    @property
+    def train_time(self) -> float:
+        return self.train_time_sec
+
+    @property
+    def peak_memory(self) -> float:
+        return self.peak_memory_mb
+
 
 class CellImageDataset(Dataset):
     def __init__(self, x: np.ndarray, y: np.ndarray):
