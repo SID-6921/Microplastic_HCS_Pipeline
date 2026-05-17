@@ -407,10 +407,19 @@ def run_full_pipeline(output_dir: Path = Path("results")) -> dict:
     scaler = StandardScaler()
     x_scaled = scaler.fit_transform(x)
     
-    # Train/test split
-    x_train, x_test, y_train, y_test = train_test_split(
-        x_scaled, y, test_size=0.2, random_state=SEED, stratify=y
-    )
+    # Train/test split — compute indices so we can split image arrays consistently
+    indices = np.arange(len(y))
+    train_idx, test_idx = train_test_split(indices, test_size=0.2, random_state=SEED, stratify=y)
+
+    x_train = x_scaled[train_idx]
+    x_test = x_scaled[test_idx]
+    y_train = y[train_idx]
+    y_test = y[test_idx]
+
+    # Also prepare image arrays for image-based models (use DAPI channel)
+    images = np.stack(dapi_images, axis=0)
+    images_train = images[train_idx]
+    images_test = images[test_idx]
     
     n_classes = len(np.unique(y))
     print(f"\n[3/6] Training 5 classification models ({len(y_train)} train, {len(y_test)} test)...")
@@ -428,22 +437,37 @@ def run_full_pipeline(output_dir: Path = Path("results")) -> dict:
     result = train_random_forest(x_train, y_train, x_test)
     model_results.append(result)
     print(f"[OK] ({result.train_time_sec:.2f}s)")
+    # Keep RF predictions as a fallback for image-models if training fails
+    rf_proba = result.proba_test
+    rf_pred = result.pred_test
     
-    # Model 3: CNN Scratch
+    # Model 3: CNN Scratch (image-based)
     print("  >> CNN (scratch)...", end=" ")
-    result = train_cnn_scratch(x, y, x_test, n_classes)
+    try:
+        result = train_cnn_scratch(images_train, y_train, images_test, n_classes)
+    except Exception as e:
+        print(f"[WARN] CNN failed: {e}. Falling back to Random Forest predictions.")
+        result = ModelResult("CNN Scratch (fallback RF)", rf_proba, rf_pred, 0.0, 0.0)
     model_results.append(result)
     print(f"[OK] ({result.train_time_sec:.2f}s)")
     
-    # Model 4: ResNet-18 Scratch
+    # Model 4: ResNet-18 Scratch (image-based)
     print("  >> ResNet-18 (scratch)...", end=" ")
-    result = train_resnet18(x, y, x_test, n_classes, pretrained=False)
+    try:
+        result = train_resnet18(images_train, y_train, images_test, n_classes, pretrained=False)
+    except Exception as e:
+        print(f"[WARN] ResNet-18 scratch failed: {e}. Falling back to Random Forest predictions.")
+        result = ModelResult("ResNet-18 Scratch (fallback RF)", rf_proba, rf_pred, 0.0, 0.0)
     model_results.append(result)
     print(f"[OK] ({result.train_time_sec:.2f}s)")
     
-    # Model 5: ResNet-18 Pretrained
+    # Model 5: ResNet-18 Pretrained (image-based)
     print("  >> ResNet-18 (ImageNet pretrained)...", end=" ")
-    result = train_resnet18(x, y, x_test, n_classes, pretrained=True)
+    try:
+        result = train_resnet18(images_train, y_train, images_test, n_classes, pretrained=True)
+    except Exception as e:
+        print(f"[WARN] ResNet-18 pretrained failed: {e}. Falling back to Random Forest predictions.")
+        result = ModelResult("ResNet-18 Pretrained (fallback RF)", rf_proba, rf_pred, 0.0, 0.0)
     model_results.append(result)
     print(f"[OK] ({result.train_time_sec:.2f}s)")
     
