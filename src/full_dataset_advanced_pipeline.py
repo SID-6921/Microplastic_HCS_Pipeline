@@ -240,9 +240,24 @@ def train_cnn_scratch(x_train, y_train, x_test, n_classes):
     """Train CNN from scratch."""
     set_seed()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    
-    x_train_reshaped = x_train.reshape(-1, 1, 512, 512).astype(np.float32) / 255.0
-    x_test_reshaped = x_test.reshape(-1, 1, 512, 512).astype(np.float32) / 255.0
+    def _to_image_tensor(arr):
+        arr = np.asarray(arr)
+        # If already NCHW
+        if arr.ndim == 4:
+            return arr.astype(np.float32) / 255.0
+        # If N,H,W -> add channel
+        if arr.ndim == 3:
+            return arr.reshape(-1, 1, arr.shape[1], arr.shape[2]).astype(np.float32) / 255.0
+        # If flattened images: N, (H*W)
+        if arr.ndim == 2:
+            if arr.shape[1] == 512 * 512:
+                return arr.reshape(-1, 1, 512, 512).astype(np.float32) / 255.0
+            # fallback: cannot interpret 2D features as images
+            raise ValueError(f"train_cnn_scratch expected image arrays but got shape {arr.shape}")
+        raise ValueError(f"Unsupported array shape for images: {arr.shape}")
+
+    x_train_reshaped = _to_image_tensor(x_train)
+    x_test_reshaped = _to_image_tensor(x_test)
     
     train_dataset = CellImageDataset(x_train_reshaped, y_train)
     train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
@@ -280,10 +295,22 @@ def train_resnet18(x_train, y_train, x_test, n_classes, pretrained=False):
     """Train ResNet-18 (scratch or pretrained with fine-tuning)."""
     set_seed()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    
-    x_train_reshaped = x_train.reshape(-1, 1, 512, 512).astype(np.float32) / 255.0
-    x_test_reshaped = x_test.reshape(-1, 1, 512, 512).astype(np.float32) / 255.0
-    
+    def _to_image_tensor(arr):
+        arr = np.asarray(arr)
+        if arr.ndim == 4:
+            t = arr.astype(np.float32) / 255.0
+            return t
+        if arr.ndim == 3:
+            t = arr.reshape(-1, 1, arr.shape[1], arr.shape[2]).astype(np.float32) / 255.0
+            return t
+        if arr.ndim == 2 and arr.shape[1] == 512 * 512:
+            t = arr.reshape(-1, 1, 512, 512).astype(np.float32) / 255.0
+            return t
+        raise ValueError(f"train_resnet18 expected image arrays but got shape {arr.shape}")
+
+    x_train_reshaped = _to_image_tensor(x_train)
+    x_test_reshaped = _to_image_tensor(x_test)
+
     # Convert grayscale to 3-channel (ResNet expects RGB)
     x_train_reshaped = np.repeat(x_train_reshaped, 3, axis=1)
     x_test_reshaped = np.repeat(x_test_reshaped, 3, axis=1)
