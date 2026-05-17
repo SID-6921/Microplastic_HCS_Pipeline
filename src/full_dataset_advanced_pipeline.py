@@ -241,18 +241,31 @@ def train_cnn_scratch(x_train, y_train, x_test, n_classes):
     set_seed()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     def _to_image_tensor(arr):
-        arr = np.asarray(arr)
+        # Accept lists/arrays of images, possibly dtype=object
+        if isinstance(arr, (list, tuple)) or getattr(arr, 'dtype', None) == object:
+            try:
+                arr = np.stack([np.asarray(x) for x in arr], axis=0)
+            except Exception:
+                arr = np.asarray(arr, dtype=np.float32)
+        else:
+            arr = np.asarray(arr)
+
         # If already NCHW
         if arr.ndim == 4:
             return arr.astype(np.float32) / 255.0
         # If N,H,W -> add channel
         if arr.ndim == 3:
-            return arr.reshape(-1, 1, arr.shape[1], arr.shape[2]).astype(np.float32) / 255.0
+            N, H, W = arr.shape
+            return arr.reshape(N, 1, H, W).astype(np.float32) / 255.0
         # If flattened images: N, (H*W)
         if arr.ndim == 2:
             if arr.shape[1] == 512 * 512:
                 return arr.reshape(-1, 1, 512, 512).astype(np.float32) / 255.0
-            # fallback: cannot interpret 2D features as images
+            # Try to infer H,W if possible (e.g., square)
+            prod = arr.shape[1]
+            side = int(np.round(np.sqrt(prod)))
+            if side * side == prod:
+                return arr.reshape(-1, 1, side, side).astype(np.float32) / 255.0
             raise ValueError(f"train_cnn_scratch expected image arrays but got shape {arr.shape}")
         raise ValueError(f"Unsupported array shape for images: {arr.shape}")
 
@@ -296,16 +309,31 @@ def train_resnet18(x_train, y_train, x_test, n_classes, pretrained=False):
     set_seed()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     def _to_image_tensor(arr):
-        arr = np.asarray(arr)
+        # Accept lists/arrays of images, possibly dtype=object
+        if isinstance(arr, (list, tuple)) or getattr(arr, 'dtype', None) == object:
+            try:
+                arr = np.stack([np.asarray(x) for x in arr], axis=0)
+            except Exception:
+                arr = np.asarray(arr, dtype=np.float32)
+        else:
+            arr = np.asarray(arr)
+
         if arr.ndim == 4:
             t = arr.astype(np.float32) / 255.0
             return t
         if arr.ndim == 3:
-            t = arr.reshape(-1, 1, arr.shape[1], arr.shape[2]).astype(np.float32) / 255.0
+            N, H, W = arr.shape
+            t = arr.reshape(N, 1, H, W).astype(np.float32) / 255.0
             return t
         if arr.ndim == 2 and arr.shape[1] == 512 * 512:
             t = arr.reshape(-1, 1, 512, 512).astype(np.float32) / 255.0
             return t
+        # Try to infer square images from flattened vectors
+        if arr.ndim == 2:
+            prod = arr.shape[1]
+            side = int(np.round(np.sqrt(prod)))
+            if side * side == prod:
+                return arr.reshape(-1, 1, side, side).astype(np.float32) / 255.0
         raise ValueError(f"train_resnet18 expected image arrays but got shape {arr.shape}")
 
     x_train_reshaped = _to_image_tensor(x_train)
