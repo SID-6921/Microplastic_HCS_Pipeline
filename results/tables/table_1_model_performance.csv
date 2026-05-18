@@ -1,6 +1,6 @@
 Model,Accuracy,Accuracy_CI_95,AUC,ECE,Train_Time_s
 Logistic Regression,0.900,"[0.750, 1.000]",0.990,0.3019,0.0
-Random Forest,1.000,"[1.000, 1.000]",1.000,0.6150,0.4
+Random Forest,1.000,"[1.000, 1.000]",1.000,0.6150,0.6
 CNN (scratch),0.800,"[0.600, 0.950]",0.843,0.4820,12.4
 ResNet-18 (scratch),0.850,"[0.700, 1.000]",0.910,0.4082,38.7
 ResNet-18 (pretrained),0.950,"[0.850, 1.000]",0.987,0.2968,52.1
