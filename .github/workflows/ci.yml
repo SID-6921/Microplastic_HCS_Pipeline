@@ -7,6 +7,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+      TARGET_PER_CLASS: '10'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,6 +28,4 @@ jobs:
         run: python -m compileall pipeline scripts tests
 
       - name: Run tests
-        env:
-          TARGET_PER_CLASS: '10'
-        run: pytest -q
+        run: python -m pytest -q tests
