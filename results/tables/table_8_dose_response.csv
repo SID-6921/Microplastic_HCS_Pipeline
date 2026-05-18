@@ -1,0 +1,10 @@
+Cell_Death_Class,MP_Type,Spearman_rho,p_value,N_Dose_Levels,Dose_Variable
+Early Apoptosis,Polystyrene (PS),0.943,1.9995e-02,6,Concentration_ug_per_mL
+Early Apoptosis,Polyethylene (PE),0.943,1.5996e-02,6,Concentration_ug_per_mL
+Early Apoptosis,PET,1.000,2.9993e-03,6,Concentration_ug_per_mL
+Late Apoptosis,Polystyrene (PS),0.943,1.4746e-02,6,Concentration_ug_per_mL
+Late Apoptosis,Polyethylene (PE),1.000,2.4994e-03,6,Concentration_ug_per_mL
+Late Apoptosis,PET,0.829,5.6486e-02,6,Concentration_ug_per_mL
+Necrosis,Polystyrene (PS),0.943,1.6496e-02,6,Concentration_ug_per_mL
+Necrosis,Polyethylene (PE),1.000,1.7496e-03,6,Concentration_ug_per_mL
+Necrosis,PET,0.943,1.7496e-02,6,Concentration_ug_per_mL

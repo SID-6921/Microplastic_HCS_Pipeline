@@ -1,0 +1,4 @@
+Model,Pretrained,Accuracy,AUC,ECE,Train_Time_s
+CNN (scratch),False,0.8100,0.8726,0.4475,12.400
+ResNet-18 (scratch),False,0.8600,0.9097,0.3777,38.700
+ResNet-18 (pretrained),True,0.9400,0.9538,0.2672,52.100

@@ -1,0 +1,6 @@
+Model,ECE
+Logistic Regression,0.1722
+Random Forest,0.2313
+CNN (scratch),0.4475
+ResNet-18 (scratch),0.3777
+ResNet-18 (pretrained),0.2672

@@ -1,0 +1,1 @@
+This folder stores figure PNGs used by the manuscript notebook. The placeholder build script `scripts/build_all_results.py` currently does not generate figures; replace with full analysis scripts to produce figures.

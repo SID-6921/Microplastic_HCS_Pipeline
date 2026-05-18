@@ -1,0 +1,1 @@
+This folder stores CSV files used by the manuscript notebook. The placeholder build script `scripts/build_all_results.py` can generate minimal example tables if the full analysis scripts are not available.
