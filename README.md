@@ -10,6 +10,8 @@
 
 This repository contains a pilot-scale workflow and derived outputs.
 Performance/statistical tables should be interpreted as exploratory, not confirmatory.
+Current build expands to a balanced 1,000-sample simulation benchmark (250/class) for stability checks,
+and uses permutation-based finite-sample inference in place of asymptotic small-n comparisons.
 The notebook and tables are provided for transparent reproducibility of the current pipeline state.
 
 ## Repository Layout

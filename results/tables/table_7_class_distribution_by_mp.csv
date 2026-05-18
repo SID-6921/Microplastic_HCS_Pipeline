@@ -1,10 +1,10 @@
-MP_Type,Size,Viable,Early Apoptosis,Late Apoptosis,Necrosis
-Polystyrene (PS),nano (100 nm),24.9%,33.7%,21.8%,19.6%
-Polystyrene (PS),micro (1–10 μm),32.9%,18.7%,25.0%,23.4%
-Polystyrene (PS),large (>10 μm),32.4%,15.2%,40.0%,12.4%
-Polyethylene (PE),nano (100 nm),29.2%,26.9%,13.0%,30.9%
-Polyethylene (PE),micro (1–10 μm),26.6%,14.2%,49.3%,9.9%
-Polyethylene (PE),large (>10 μm),11.1%,21.3%,35.9%,31.7%
-PET,nano (100 nm),41.9%,8.2%,22.9%,27.1%
-PET,micro (1–10 μm),13.6%,5.3%,32.9%,48.2%
-PET,large (>10 μm),22.7%,54.9%,9.1%,13.4%
+MP_Type,Size,N,Viable,Early Apoptosis,Late Apoptosis,Necrosis
+Polystyrene (PS),nano (100 nm),101,25.7%,23.8%,17.8%,20.8%
+Polystyrene (PS),micro (1–10 μm),115,19.1%,29.6%,16.5%,27.0%
+Polystyrene (PS),large (>10 μm),118,15.3%,27.1%,20.3%,23.7%
+Polyethylene (PE),nano (100 nm),118,29.7%,17.8%,22.0%,24.6%
+Polyethylene (PE),micro (1–10 μm),116,22.4%,19.8%,22.4%,28.4%
+Polyethylene (PE),large (>10 μm),96,18.8%,24.0%,30.2%,17.7%
+PET,nano (100 nm),120,19.2%,26.7%,22.5%,23.3%
+PET,micro (1–10 μm),99,22.2%,17.2%,27.3%,22.2%
+PET,large (>10 μm),117,30.8%,17.1%,25.6%,14.5%

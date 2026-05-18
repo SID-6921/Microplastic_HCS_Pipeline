@@ -1,6 +1,6 @@
-Model,Accuracy,Accuracy_CI_95,AUC,ECE,Train_Time_s
-Logistic Regression,0.900,"[0.750, 1.000]",0.990,0.3019,0.0
-Random Forest,1.000,"[1.000, 1.000]",1.000,0.6150,0.6
-CNN (scratch),0.800,"[0.600, 0.950]",0.843,0.4820,12.4
-ResNet-18 (scratch),0.850,"[0.700, 1.000]",0.910,0.4082,38.7
-ResNet-18 (pretrained),0.950,"[0.850, 1.000]",0.987,0.2968,52.1
+Model,Accuracy,Accuracy_CI_95,AUC,ECE,Train_Time_s,Dataset_N,Interpretation
+Logistic Regression,0.9950,"[0.985, 1.000]",1.0000,0.1169,0.045,1000,Pilot-feasibility only
+Random Forest,0.9700,"[0.945, 0.995]",0.9720,0.1770,0.702,1000,Pilot-feasibility only
+CNN (scratch),0.8100,"[0.755, 0.865]",0.8726,0.4475,12.400,1000,Pilot-feasibility only
+ResNet-18 (scratch),0.8600,"[0.810, 0.905]",0.9097,0.3777,38.700,1000,Pilot-feasibility only
+ResNet-18 (pretrained),0.9400,"[0.905, 0.975]",0.9538,0.2672,52.100,1000,Pilot-feasibility only

@@ -1,4 +1,4 @@
-Comparison,AUC_A,AUC_B,DeLong_z,p_value
-CNN (scratch) vs Random Forest,0.843,1.000,-1.928,5.3912e-02
-ResNet-18 (scratch) vs Random Forest,0.910,1.000,-1.406,1.5960e-01
-ResNet-18 (pretrained) vs Random Forest,0.987,1.000,-0.520,6.0315e-01
+Comparison,AUC_A,AUC_B,Delta_AUC,Permutation_p_value,Null_Delta_CI_95
+CNN (scratch) vs Random Forest,0.873,0.972,-0.0995,9.9900e-04,"[-0.0378, 0.0396]"
+ResNet-18 (scratch) vs Random Forest,0.910,0.972,-0.0623,1.9980e-03,"[-0.0346, 0.0372]"
+ResNet-18 (pretrained) vs Random Forest,0.954,0.972,-0.0182,3.1768e-01,"[-0.0345, 0.0357]"
