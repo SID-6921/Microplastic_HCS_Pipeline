@@ -133,7 +133,7 @@ def _make_harder(dapi, pi, rng, severity=2.0, blur_p=0.4, mix_p=0.35):
 
 
 def generate_dataset(n_per_class=TARGET_PER_CLASS, seed=SEED):
-    print("[1/7] Generating harder simulation dataset…")
+    print("[1/7] Generating harder simulation dataset...")
     rng = np.random.default_rng(seed)
     dapi, pi, meta = simulate_bbbc014_dataset(num_images_per_class=n_per_class, random_seed=seed)
     dapi, pi = _make_harder(dapi, pi, rng)
@@ -180,8 +180,9 @@ def _expand_feature_table(df, target_per_class, seed=SEED):
 
 def extract_features(dapi, pi, meta, force=False, target_per_class=TARGET_PER_CLASS):
     fpath = RESULTS / "features.csv"
+    partial_fpath = RESULTS / "features.partial.csv"
     if fpath.exists() and not force:
-        print("[2/7] Loading existing features.csv …")
+        print("[2/7] Loading existing features.csv ...")
         df = pd.read_csv(fpath)
         # Rebuild if plate_id column is missing (schema upgrade)
         if "plate_id" not in df.columns:
@@ -189,16 +190,25 @@ def extract_features(dapi, pi, meta, force=False, target_per_class=TARGET_PER_CL
         else:
             min_n = int(df["class_id"].value_counts().min())
             if min_n < target_per_class:
-                print(f"       Expanding features to {target_per_class}/class (from min {min_n}/class) …")
+                print(f"       Expanding features to {target_per_class}/class (from min {min_n}/class) ...")
                 # IMPORTANT: expansion applied to the full real dataset first, then augment.
                 # This preserves real-image plate_id values for GroupKFold.
                 df = _expand_feature_table(df, target_per_class=target_per_class, seed=SEED)
                 df.to_csv(fpath, index=False)
-                print(f"       Updated → {fpath.relative_to(ROOT)} ({len(df)} rows)")
+                print(f"       Updated -> {fpath.relative_to(ROOT)} ({len(df)} rows)")
             return df
-    print("[2/7] Extracting 18-descriptor features …")
+    print("[2/7] Extracting 18-descriptor features ...")
     rows = []
-    for idx, row in meta.iterrows():
+    if partial_fpath.exists() and not force:
+        partial_df = pd.read_csv(partial_fpath)
+        rows = partial_df.to_dict("records")
+        print(f"       Resuming from checkpoint -> {partial_fpath.relative_to(ROOT)} ({len(rows)}/{len(meta)} images)")
+
+    start_idx = len(rows)
+    total = len(meta)
+    checkpoint_every = 25
+    for idx in range(start_idx, total):
+        row = meta.iloc[idx]
         d = resize_image(dapi[idx], (512, 512))
         d = normalize_image(clean_image(d))
         p = resize_image(pi[idx], (512, 512))
@@ -214,10 +224,18 @@ def extract_features(dapi, pi, meta, force=False, target_per_class=TARGET_PER_CL
         )
         feat["plate_id"] = int(row.get("plate_id", row["class_id"] * 100))
         rows.append(feat)
+
+        completed = idx + 1
+        if completed == 1 or completed % checkpoint_every == 0 or completed == total:
+            pd.DataFrame(rows).to_csv(partial_fpath, index=False)
+            print(f"       Processed {completed}/{total} images ...")
+
     df = pd.DataFrame(rows)
     df = _expand_feature_table(df, target_per_class=target_per_class, seed=SEED)
     df.to_csv(fpath, index=False)
-    print(f"       Saved → {fpath.relative_to(ROOT)}")
+    if partial_fpath.exists():
+        partial_fpath.unlink()
+    print(f"       Saved -> {fpath.relative_to(ROOT)}")
     return df
 
 
@@ -426,8 +444,14 @@ def run_cv(Xs, y, groups):
     genuine training requires GPU resources unavailable in this CI environment;
     their held-out test-set AUC/accuracy values are reported in Table 1 instead.
     """
-    print("[4/7] Running 5-fold plate-level GroupKFold CV (LR, RF) …")
-    gkf = GroupKFold(n_splits=5)
+    unique_groups = int(np.unique(groups).size)
+    if unique_groups < 2:
+        raise ValueError("GroupKFold requires at least 2 distinct plate groups.")
+    n_splits = min(5, unique_groups)
+    print(f"[4/7] Running {n_splits}-fold plate-level GroupKFold CV (LR, RF) ...")
+    if n_splits < 5:
+        print(f"       Smoke-test fallback: only {unique_groups} distinct groups available.")
+    gkf = GroupKFold(n_splits=n_splits)
     cv_rows = []
     for name, clf in [
         ("Logistic Regression", LogisticRegression(max_iter=2000, random_state=SEED, solver="lbfgs")),
@@ -443,7 +467,7 @@ def run_cv(Xs, y, groups):
             fold_auc.append(roc_auc_score(yb, pb, multi_class="ovr", average="macro"))
         cv_rows.append(dict(
             model=name,
-            cv_method="GroupKFold(k=5, key=plate_id)",
+            cv_method=f"GroupKFold(k={n_splits}, key=plate_id)",
             cv_acc_mean=round(np.mean(fold_acc), 4),
             cv_acc_std=round(np.std(fold_acc), 4),
             cv_auc_mean=round(np.mean(fold_auc), 4),
