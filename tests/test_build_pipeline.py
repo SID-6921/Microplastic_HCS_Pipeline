@@ -21,6 +21,7 @@ def test_expand_feature_table_balances_classes() -> None:
             "image_id": ["a", "b", "c", "d"],
             "class_id": [0, 1, 2, 3],
             "class_name": ["Viable", "Early Apoptosis", "Late Apoptosis", "Necrosis"],
+            "plate_id": [0, 100, 200, 300],
             **{col: [1.0, 2.0, 3.0, 4.0] for col in mod.FEATURE_COLS},
         }
     )
@@ -29,3 +30,6 @@ def test_expand_feature_table_balances_classes() -> None:
     counts = expanded["class_id"].value_counts().to_dict()
     assert all(counts[cid] >= 3 for cid in range(4))
     assert set(mod.FEATURE_COLS).issubset(expanded.columns)
+    # Augmented rows should have plate_id >= 10000
+    aug_rows = expanded[expanded["image_id"].str.startswith("aug_")]
+    assert (aug_rows["plate_id"] >= 10000).all()

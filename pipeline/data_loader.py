@@ -97,11 +97,15 @@ def simulate_bbbc014_dataset(
             dapi_images.append(dapi)
             pi_images.append(pi)
             
+            # plate_id: groups of 6 images per class → plate-level CV grouping
+            plate_id = class_id * 100 + (idx // 6)
+
             metadata_list.append({
                 "image_id": image_id,
                 "class_id": class_id,
                 "class_name": class_name,
                 "image_index": image_idx,
+                "plate_id": plate_id,
             })
     
     metadata = pd.DataFrame(metadata_list)
