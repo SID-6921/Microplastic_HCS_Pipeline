@@ -1,6 +1,6 @@
-Model,ECE
-Logistic Regression,0.1722
-Random Forest,0.2313
-CNN (scratch),0.4475
-ResNet-18 (scratch),0.3777
-ResNet-18 (pretrained),0.2672
+Model,ECE_before_calibration,ECE_after_Platt_scaling
+Logistic Regression,0.1827,0.4174
+Random Forest,0.3550,0.1536
+CNN (scratch),0.4475,N/A (simulated model)
+ResNet-18 (scratch),0.3777,N/A (simulated model)
+ResNet-18 (pretrained),0.2672,N/A (simulated model)
