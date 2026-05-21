@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Microplastic HCS Pipeline"
+abstract: >
+  A reproducible high-content screening pipeline for multi-class microplastic-associated
+  cell death classification. Provides simulation-based feasibility benchmarking of
+  feature engineering and deep learning approaches with rigorous plate-level
+  cross-validation, calibration auditing, and permutation-based model comparison.
+type: software
+license: MIT
+date-released: "2026-05-21"
+repository-code: "[repository URL]"
+keywords:
+  - microplastics
+  - high-content screening
+  - cell death classification
+  - machine learning
+  - deep learning
+  - model calibration
+  - computational toxicology
+  - reproducibility
+authors:
+  - family-names: "[Last Name]"
+    given-names: "[First Name]"
+    affiliation: "[Institution]"
+    email: "[email]"
+preferred-citation:
+  type: article
+  title: >
+    A reproducible high-content screening pipeline for multi-class
+    microplastic-associated cell death classification: simulation-based
+    feasibility benchmarking of feature engineering and deep learning approaches
+  authors:
+    - family-names: "[Last Name]"
+      given-names: "[First Name]"
+      affiliation: "[Institution]"
+  journal: "Environment International"
+  year: 2026
+  status: submitted
