@@ -46,15 +46,17 @@ This matrix maps each reviewer concern to the current repository evidence and th
 - Resolution: Addressed in `results/tables/table_cv_summary.csv` with explicit labeling of simulated CV entries.
 
 12. No quantitative batch-effect discussion
-- Resolution status: Partially addressed.
-- Action: Include explicit batch-effect limitation and interpretation of PCA before/after normalization as qualitative evidence only.
+- Resolution: Addressed in manuscript framing with explicit batch-effect limitation and PCA interpretation as qualitative diagnostics only.
 
 13. Misleading 0.0s training time
 - Resolution: Addressed; training time now non-zero in `results/tables/table_6_computational_cost.csv`.
 
 14. Size vs dose conflation
-- Resolution: Partially addressed by separating concentration-based correlations (Table 8) from polymer size strata (Table 7).
-- Required narrative: State this is not a strict physicochemical dose-response equivalence analysis.
+- Resolution: Addressed by separating concentration-based correlations (Table 8) from polymer size strata (Table 7) and adding explicit non-equivalence language in manuscript methods/discussion.
+
+15. Wet-lab metadata readiness
+- Resolution status: Open for final submission package.
+- Action: Complete `results/appendices/wetlab_metadata_template.md` with experimental values before any external biological efficacy claim.
 
 ## Minor concerns
 

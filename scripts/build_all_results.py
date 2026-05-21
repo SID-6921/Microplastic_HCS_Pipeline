@@ -1030,7 +1030,7 @@ def _supp_feature_dist(df, fname, cols, labels, title):
 # ------------------------------------------------------------------
 def main():
     print("=" * 65)
-    print("  Microplastic HCS Pipeline — Build All Results")
+    print("  Microplastic HCS Pipeline - Build All Results")
     print("=" * 65)
     t_start = time.perf_counter()
 
@@ -1045,7 +1045,7 @@ def main():
 
     elapsed = time.perf_counter() - t_start
     print(f"\n[7/7] Done in {elapsed:.1f}s")
-    print(f"      Tables  → results/tables/ (9 CSV files)")
+    print(f"      Tables  -> results/tables/ (9 CSV files)")
     print(f"      Figures -> results/figures/ (17 PNG @ 300 DPI)")
     print("=" * 65)
 

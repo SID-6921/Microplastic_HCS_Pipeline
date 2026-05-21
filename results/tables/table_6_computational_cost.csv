@@ -1,6 +1,6 @@
 Model,Train_Time_s,Dataset_N,Notes
-Logistic Regression,0.0199,1000,Pilot runtime; hardware-dependent
-Random Forest,0.5614,1000,Pilot runtime; hardware-dependent
+Logistic Regression,0.0155,1000,Pilot runtime; hardware-dependent
+Random Forest,0.4071,1000,Pilot runtime; hardware-dependent
 CNN (scratch),12.4000,1000,Pilot runtime; hardware-dependent
 ResNet-18 (scratch),38.7000,1000,Pilot runtime; hardware-dependent
 ResNet-18 (pretrained),52.1000,1000,Pilot runtime; hardware-dependent
