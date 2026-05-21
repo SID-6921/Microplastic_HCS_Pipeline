@@ -1,11 +1,11 @@
 MP_Type,Size,N_images,Mean_cells_per_image,Viable,Early Apoptosis,Late Apoptosis,Necrosis,Note
-Polystyrene (PS),nano (100 nm),101.0,1609.6,0.0%,0.0%,0.0%,0.0%,
-Polystyrene (PS),micro (1–10 μm),115.0,1616.7,0.0%,0.0%,0.0%,0.0%,
-Polystyrene (PS),large (>10 μm),118.0,1619.1,0.0%,0.0%,0.0%,0.0%,
-Polyethylene (PE),nano (100 nm),118.0,1602.6,0.0%,0.0%,0.0%,0.0%,
-Polyethylene (PE),micro (1–10 μm),116.0,1610.9,0.0%,0.0%,0.0%,0.0%,
-Polyethylene (PE),large (>10 μm),96.0,1630.6,0.0%,0.0%,0.0%,0.0%,
-PET,nano (100 nm),120.0,1592.7,0.0%,0.0%,0.0%,0.0%,
-PET,micro (1–10 μm),99.0,1612.8,0.0%,0.0%,0.0%,0.0%,
-PET,large (>10 μm),117.0,1608.5,0.0%,0.0%,0.0%,0.0%,
-,,,,,,,,"Unit of analysis = images (fields of view). Mean cells per image = 1611.0 ± 178.3. Total cells across all images = 1,611,035."
+Polystyrene (PS),nano (100 nm),101.0,1609.6,28.7%,28.7%,20.8%,21.8%,
+Polystyrene (PS),micro (1–10 μm),115.0,1616.7,20.9%,29.6%,20.0%,29.6%,
+Polystyrene (PS),large (>10 μm),118.0,1619.1,16.9%,30.5%,24.6%,28.0%,
+Polyethylene (PE),nano (100 nm),118.0,1602.6,32.2%,18.6%,23.7%,25.4%,
+Polyethylene (PE),micro (1–10 μm),116.0,1610.9,25.9%,21.6%,22.4%,30.2%,
+Polyethylene (PE),large (>10 μm),96.0,1630.6,22.9%,27.1%,32.3%,17.7%,
+PET,nano (100 nm),120.0,1592.7,20.8%,27.5%,24.2%,27.5%,
+PET,micro (1–10 μm),99.0,1612.8,23.2%,20.2%,32.3%,24.2%,
+PET,large (>10 μm),117.0,1608.5,33.3%,21.4%,26.5%,18.8%,
+,,,,,,,,"Unit of analysis = images (fields of view). Mean cells per image = 1611.0 ± 178.3. Total cells across all images = 1,611,035. Class balance enforced by simulation design: 250 images per class."

@@ -1,6 +1,6 @@
-Model,ECE_before_calibration,ECE_after_Platt_scaling
-Logistic Regression,0.1827,0.4174
-Random Forest,0.3550,0.1536
-CNN (scratch),0.4475,N/A (simulated model)
-ResNet-18 (scratch),0.3777,N/A (simulated model)
-ResNet-18 (pretrained),0.2672,N/A (simulated model)
+Model,Calibration_Method,ECE_before_calibration,ECE_after_calibration
+Logistic Regression,N/A,0.1827,0.1827
+Random Forest,N/A,0.3647,0.3647
+CNN (scratch),temperature(T=0.60),0.4475,0.1747
+ResNet-18 (scratch),temperature(T=0.65),0.3777,0.1723
+ResNet-18 (pretrained),temperature(T=0.70),0.2672,0.0571

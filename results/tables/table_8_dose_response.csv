@@ -1,10 +1,10 @@
-Cell_Death_Class,MP_Type,Spearman_rho,p_value,N_Dose_Levels,Dose_Variable,p_value_BH_corrected,significant_FDR05,significant_nominal05
-Early Apoptosis,Polystyrene (PS),0.943,1.7746e-02,6,Concentration_ug_per_mL,2.2494e-02,True,True
-Early Apoptosis,Polyethylene (PE),0.943,1.4496e-02,6,Concentration_ug_per_mL,2.2494e-02,True,True
-Early Apoptosis,PET,1.000,3.2492e-03,6,Concentration_ug_per_mL,9.7476e-03,True,True
-Late Apoptosis,Polystyrene (PS),0.943,1.6496e-02,6,Concentration_ug_per_mL,2.2494e-02,True,True
-Late Apoptosis,Polyethylene (PE),1.000,2.2494e-03,6,Concentration_ug_per_mL,9.7476e-03,True,True
-Late Apoptosis,PET,0.829,6.1735e-02,6,Concentration_ug_per_mL,6.1735e-02,False,False
-Necrosis,Polystyrene (PS),0.943,1.9995e-02,6,Concentration_ug_per_mL,2.2494e-02,True,True
-Necrosis,Polyethylene (PE),1.000,3.2492e-03,6,Concentration_ug_per_mL,9.7476e-03,True,True
-Necrosis,PET,0.943,1.6496e-02,6,Concentration_ug_per_mL,2.2494e-02,True,True
+Analysis_Context,Cell_Death_Class,MP_Type,Spearman_rho,p_value,N_Dose_Levels,Dose_Variable,p_value_BH_corrected,significant_FDR05,significant_nominal05
+Simulator dose-encoding self-consistency check,Early Apoptosis,Polystyrene (PS),0.943,1.5996e-02,6,Concentration_ug_per_mL,2.1530e-02,True,True
+Simulator dose-encoding self-consistency check,Early Apoptosis,Polyethylene (PE),0.943,1.4996e-02,6,Concentration_ug_per_mL,2.1530e-02,True,True
+Simulator dose-encoding self-consistency check,Early Apoptosis,PET,1.000,1.7496e-03,6,Concentration_ug_per_mL,9.7476e-03,True,True
+Simulator dose-encoding self-consistency check,Late Apoptosis,Polystyrene (PS),0.943,2.0745e-02,6,Concentration_ug_per_mL,2.3338e-02,True,True
+Simulator dose-encoding self-consistency check,Late Apoptosis,Polyethylene (PE),1.000,2.4994e-03,6,Concentration_ug_per_mL,9.7476e-03,True,True
+Simulator dose-encoding self-consistency check,Late Apoptosis,PET,0.829,5.8235e-02,6,Concentration_ug_per_mL,5.8235e-02,False,False
+Simulator dose-encoding self-consistency check,Necrosis,Polystyrene (PS),0.943,1.2997e-02,6,Concentration_ug_per_mL,2.1530e-02,True,True
+Simulator dose-encoding self-consistency check,Necrosis,Polyethylene (PE),1.000,3.2492e-03,6,Concentration_ug_per_mL,9.7476e-03,True,True
+Simulator dose-encoding self-consistency check,Necrosis,PET,0.943,1.6746e-02,6,Concentration_ug_per_mL,2.1530e-02,True,True

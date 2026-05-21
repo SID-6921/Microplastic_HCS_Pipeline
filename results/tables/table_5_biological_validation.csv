@@ -1,7 +1,6 @@
 Feature,KW_H,KW_p,Spearman_rho
 nuclear_fragmentation_index,8.754,3.2744e-02,0.010
 cell_shrinkage_ratio,2.505,4.7448e-01,0.005
-membrane_blebbing_score,0.000,1.0000e+00,nan
 chromatin_condensation_proxy,148.125,6.6869e-32,-0.038
 cell_swelling_index,3.814,2.8231e-01,0.005
 membrane_permeability_proxy,799.113,6.7391e-173,-0.894

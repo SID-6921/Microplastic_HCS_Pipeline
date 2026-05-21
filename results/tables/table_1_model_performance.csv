@@ -1,6 +1,6 @@
-Model,Accuracy,Accuracy_CI_95,AUC,ECE,Train_Time_s,Dataset_N,Interpretation
-Logistic Regression,0.9050,"[0.865, 0.945]",0.9809,0.1827,0.031,1000,Pilot-feasibility only
-Random Forest,0.8400,"[0.790, 0.890]",0.9540,0.3550,0.494,1000,Pilot-feasibility only
-CNN (scratch),0.8100,"[0.755, 0.865]",0.8726,0.4475,12.400,1000,Pilot-feasibility only
-ResNet-18 (scratch),0.8600,"[0.810, 0.905]",0.9097,0.3777,38.700,1000,Pilot-feasibility only
-ResNet-18 (pretrained),0.9400,"[0.905, 0.975]",0.9538,0.2672,52.100,1000,Pilot-feasibility only
+Model,Accuracy,Accuracy_CI_95,AUC,ECE,DL_AUC_SD_3_Seeds,Evaluation_Protocol,Train_Time_s,Dataset_N,Interpretation
+Logistic Regression,0.9050,"[0.865, 0.945]",0.9809,0.1827,N/A,5-fold GroupKFold (plate-level),0.020,1000,Simulation-feasibility only
+Random Forest,0.8450,"[0.795, 0.895]",0.9550,0.3647,N/A,5-fold GroupKFold (plate-level),0.561,1000,Simulation-feasibility only
+CNN (scratch),0.8100,"[0.755, 0.865]",0.8726,0.4475,0.0085,Single split (simulation-conditioned),12.400,1000,Simulation-feasibility only
+ResNet-18 (scratch),0.8600,"[0.810, 0.905]",0.9097,0.3777,0.0054,Single split (simulation-conditioned),38.700,1000,Simulation-feasibility only
+ResNet-18 (pretrained),0.9400,"[0.905, 0.975]",0.9538,0.2672,0.0094,Single split (simulation-conditioned),52.100,1000,Simulation-feasibility only

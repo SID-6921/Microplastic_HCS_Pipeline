@@ -1,4 +1,4 @@
-Model,Pretrained,Accuracy,AUC,ECE,Train_Time_s
-CNN (scratch),False,0.8100,0.8726,0.4475,12.400
-ResNet-18 (scratch),False,0.8600,0.9097,0.3777,38.700
-ResNet-18 (pretrained),True,0.9400,0.9538,0.2672,52.100
+Model,Pretrained,AUC_Viable,AUC_Early_Apoptosis,AUC_Late_Apoptosis,AUC_Necrosis,Macro_AUC
+CNN (scratch),False,0.8881,0.8609,0.8425,0.8987,0.8726
+ResNet-18 (scratch),False,0.9507,0.9196,0.8892,0.8792,0.9097
+ResNet-18 (pretrained),True,0.9547,0.9451,0.9699,0.9455,0.9538
