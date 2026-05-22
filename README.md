@@ -3,7 +3,6 @@
 [![CI](https://github.com/SID-6921/Microplastic_HCS_Pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/SID-6921/Microplastic_HCS_Pipeline/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
 Code and reproducible pipeline for the manuscript:
 
@@ -64,6 +63,8 @@ Open `notebooks/MS2_Manuscript.ipynb` after the build completes to review the ge
 
 If you use this code or pipeline, please cite the manuscript (citation details will be
 updated upon acceptance). A `CITATION.cff` file is included in this repository.
+Zenodo DOI metadata is prepared via `.zenodo.json` and should be activated on the
+first tagged GitHub release.
 
 ## Scope and limitations
 

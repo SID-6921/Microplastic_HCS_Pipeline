@@ -9,7 +9,7 @@ abstract: >
 type: software
 license: MIT
 date-released: "2026-05-21"
-repository-code: "[repository URL]"
+repository-code: "https://github.com/SID-6921/Microplastic_HCS_Pipeline"
 keywords:
   - microplastics
   - high-content screening
@@ -20,10 +20,8 @@ keywords:
   - computational toxicology
   - reproducibility
 authors:
-  - family-names: "[Last Name]"
-    given-names: "[First Name]"
-    affiliation: "[Institution]"
-    email: "[email]"
+  - family-names: "Nanda"
+    given-names: "Siddhardha"
 preferred-citation:
   type: article
   title: >
@@ -31,9 +29,8 @@ preferred-citation:
     microplastic-associated cell death classification: simulation-based
     feasibility benchmarking of feature engineering and deep learning approaches
   authors:
-    - family-names: "[Last Name]"
-      given-names: "[First Name]"
-      affiliation: "[Institution]"
+    - family-names: "Nanda"
+      given-names: "Siddhardha"
   journal: "Environment International"
   year: 2026
   status: submitted
