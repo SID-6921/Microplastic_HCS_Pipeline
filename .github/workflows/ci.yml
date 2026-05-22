@@ -2,11 +2,16 @@ name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
     env:
       PYTHONPATH: ${{ github.workspace }}
       TARGET_PER_CLASS: '10'
@@ -14,10 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
@@ -28,4 +34,9 @@ jobs:
         run: python -m compileall pipeline scripts tests
 
       - name: Run tests
-        run: python -m pytest -q tests
+        run: python -m pytest -q --tb=short tests
+
+      - name: Smoke build (fast mode)
+        run: python scripts/build_all_results.py
+        env:
+          TARGET_PER_CLASS: '5'

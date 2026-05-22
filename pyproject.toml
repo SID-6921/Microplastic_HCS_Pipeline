@@ -5,10 +5,28 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "microplastic-hcs-pipeline"
 version = "1.0.0"
-description = "Microplastic HCS pipeline for MS2 pilot feasibility analysis"
+description = "Reproducible HCS pipeline for multi-class microplastic-associated cell death classification"
 readme = "README.md"
+license = {text = "MIT"}
 requires-python = ">=3.10"
+keywords = [
+    "microplastics", "high-content screening", "cell death",
+    "machine learning", "deep learning", "calibration",
+    "computational toxicology", "reproducibility"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 filterwarnings = ["ignore::UserWarning"]
+

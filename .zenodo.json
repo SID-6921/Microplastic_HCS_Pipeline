@@ -1,0 +1,28 @@
+{
+  "title": "A reproducible high-content screening pipeline for multi-class microplastic-associated cell death classification",
+  "description": "Simulation-based feasibility benchmarking of feature engineering and deep learning approaches for automated four-class cell death classification in DAPI/PI dual-channel high-content screening images.",
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "keywords": [
+    "microplastics",
+    "high-content screening",
+    "cell death classification",
+    "machine learning",
+    "deep learning",
+    "model calibration",
+    "computational toxicology",
+    "reproducibility",
+    "image analysis"
+  ],
+  "related_identifiers": [
+    {
+      "scheme": "url",
+      "identifier": "https://github.com/SID-6921/Microplastic_HCS_Pipeline",
+      "relation": "isSupplementTo"
+    }
+  ],
+  "communities": [
+    {"identifier": "zenodo"}
+  ]
+}

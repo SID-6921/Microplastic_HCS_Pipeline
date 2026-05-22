@@ -3,21 +3,43 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
 .env
 .venv
 env/
 venv/
+*.egg
 
 # Jupyter
-.ipynb_checkpoints
+.ipynb_checkpoints/
+*.ipynb~
 
-# Data and results (keep under results/)
+# Data and results (keep only committed artifacts)
 data/
 results/tmp/
+*.h5
+*.hdf5
+*.pkl
+*.joblib
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Visual Studio Code
 .vscode/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Distribution
+*.whl
+*.tar.gz
+

@@ -1,6 +1,9 @@
 ﻿# Microplastic HCS Pipeline
 
+[![CI](https://github.com/SID-6921/Microplastic_HCS_Pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/SID-6921/Microplastic_HCS_Pipeline/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
 Code and reproducible pipeline for the manuscript:
 
@@ -68,3 +71,17 @@ All results in this repository are derived from a **synthetic simulation benchma
 No in vitro or in vivo experiments were conducted. The pipeline is designed as a
 validated computational substrate for future deployment on experimental HCS datasets.
 See the manuscript Methods §2.1 for full scope statement.
+
+## Key results at a glance
+
+| Model | Macro AUC | Accuracy | ECE (post-cal) |
+|---|---|---|---|
+| Logistic Regression | **0.981** | 0.905 | 0.183 |
+| Random Forest | 0.955 | 0.845 | 0.365 |
+| ResNet-18 (pretrained) | 0.954 | 0.940 | **0.057** |
+| ResNet-18 (scratch) | 0.910 | 0.860 | 0.172 |
+| CNN (scratch) | 0.873 | 0.810 | 0.175 |
+
+Feature ablation: AUC drops from **0.972 → 0.603** over 8 sequential descriptor removals.
+Permutation test: pretrained ResNet-18 non-inferior to Random Forest (p = 0.948).
+Dose-encoding significant in **8/9** strata after BH correction.

@@ -1,0 +1,33 @@
+name: Feature / enhancement request
+description: Suggest an improvement to the pipeline or manuscript artifacts
+labels: [enhancement]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: What scientific or engineering problem does this solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe what you have in mind. Code sketches welcome.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - Feature extraction (pipeline/)
+        - Model training / evaluation
+        - Figures or tables
+        - Documentation / manuscript
+        - CI / build tooling
+        - Other
+    validations:
+      required: true
