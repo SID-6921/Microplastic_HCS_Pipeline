@@ -80,6 +80,11 @@ FORBIDDEN = [
     "0.0005",                          # stale p notation; canonical is 5 \u00d7 10\u207b\u2074
     "p = 5e-4", "p=5e-4",              # informal notation
     "ResNet-18 (0.954\u20130.954)",    # silly degenerate range
+    "domit",                           # typo reviewer flagged by name
+    "Author Name",                     # placeholder author block
+    "Department, Institution",         # placeholder affiliation
+    "email@institution.edu",           # placeholder email
+    "0.961 to 0.887",                  # stale ablation prose (Table 4 row is 0.9724 -> 0.8698)
 ]
 
 
