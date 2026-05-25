@@ -11,8 +11,8 @@ area_covered_ratio,12.087,0.007091,-0.027,1.5068e-02,True
 cell_count,8.848,0.031383,0.058,4.8694e-02,True
 density_cells_per_10k_px,8.848,0.031383,0.058,4.8694e-02,True
 cell_area_mean,7.297,0.063015,-0.056,8.2404e-02,False
-cell_area_std,277.048,9.216699999999999e-60,-0.004,7.8342e-59,True
+cell_area_std,277.048,9.2167e-60,-0.004,7.8342e-59,True
 cell_area_median,3.806,0.28318,0.028,3.0088e-01,False
 small_cell_fraction,8.647,0.034372,-0.01,4.8694e-02,True
 medium_cell_fraction,4.877,0.18107,0.018,2.1987e-01,False
-large_cell_fraction,188.38,1.3664999999999998e-40,-0.067,7.7435e-40,True
+large_cell_fraction,188.38,1.3664999999999996e-40,-0.067,7.7435e-40,True
