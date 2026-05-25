@@ -1,5 +1,4 @@
 Comparison,AUC_A,AUC_B,Delta_AUC,Permutation_p_value,Null_Delta_CI_95,Permutations,Test_Type
-CNN (scratch) vs Random Forest,0.873,0.955,-0.0824,0.00029997,"[-0.0425, 0.0430]",10000,two-sided permutation
-ResNet-18 (scratch) vs Random Forest,0.91,0.955,-0.0453,0.026097,"[-0.0407, 0.0397]",10000,two-sided permutation
-ResNet-18 (pretrained) vs Random Forest,0.954,0.955,-0.0012,0.94781,"[-0.0362, 0.0352]",10000,two-sided permutation
-Logistic Regression vs Random Forest,0.981,0.955,0.0259,4.9995e-04,"[-0.0159, 0.0160]",10000,two-sided permutation
+CNN (scratch) vs Random Forest,0.873,0.955,-0.0824,2.9997e-04,"[-0.0425, 0.0430]",10000,two-sided permutation
+ResNet-18 (scratch) vs Random Forest,0.910,0.955,-0.0453,2.6097e-02,"[-0.0407, 0.0397]",10000,two-sided permutation
+ResNet-18 (pretrained) vs Random Forest,0.954,0.955,-0.0012,9.4781e-01,"[-0.0362, 0.0352]",10000,two-sided permutation

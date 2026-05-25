@@ -1,6 +1,4 @@
 Model,Pretrained,AUC_Viable,AUC_Early_Apoptosis,AUC_Late_Apoptosis,AUC_Necrosis,Macro_AUC
-Logistic Regression,N/A (feature-based),0.9836,0.9501,0.9901,0.9999,0.9809
-Random Forest,N/A (feature-based),0.9560,0.9211,0.9800,0.9629,0.9550
 CNN (scratch),False,0.8881,0.8609,0.8425,0.8987,0.8726
 ResNet-18 (scratch),False,0.9507,0.9196,0.8892,0.8792,0.9097
 ResNet-18 (pretrained),True,0.9547,0.9451,0.9699,0.9455,0.9538
