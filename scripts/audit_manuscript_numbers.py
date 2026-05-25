@@ -19,6 +19,12 @@ import sys
 import pandas as pd
 from docx import Document
 
+# Force UTF-8 stdout so unicode (\u00b1, \u202f, superscripts) prints on Windows cp1252 consoles.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 ROOT   = Path(__file__).resolve().parent.parent
 DOCX   = ROOT / "docs" / "EI_Manuscript_FINAL.docx"
 TABLES = ROOT / "results" / "tables"
@@ -174,9 +180,9 @@ def main() -> int:
         "5\u00a0\u00d7\u00a010\u207b\u2074",
     ]
     if any(v in text for v in p_variants):
-        print("  [PASS] p-value (text): 5\u00d710\u207b\u2074 present (in a canonical spacing form)")
+        print("  [PASS] p-value (text): 5x10^-4 present (in a canonical spacing form)")
     else:
-        print("  [FAIL] p-value (text): 5\u00d710\u207b\u2074 NOT FOUND in any canonical spacing form")
+        print("  [FAIL] p-value (text): 5x10^-4 NOT FOUND in any canonical spacing form")
         ok = False
 
     print("\n[F] Forbidden / stale values must be absent")
