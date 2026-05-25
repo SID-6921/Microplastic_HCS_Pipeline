@@ -91,6 +91,9 @@ FORBIDDEN = [
     "Department, Institution",         # placeholder affiliation
     "email@institution.edu",           # placeholder email
     "0.961 to 0.887",                  # stale ablation prose (Table 4 row is 0.9724 -> 0.8698)
+    "10\u207b\u00b9\u2077\u00b0",      # corrupted exponent: degree sign instead of superscript zero
+    # Note: 'o (100 nm)' truncation in Table 7 is enforced by patch_proofreading_v4.py;
+    # not added here because it would substring-match the correct 'nano (100 nm)'.
 ]
 
 
