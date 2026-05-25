@@ -1085,19 +1085,20 @@ def build():
         doc.add_page_break()
 
     # ── Post-process: strip all en/em dashes to hyphens ──────────────────
+    # IMPORTANT: only modify runs that actually contain a dash. Setting
+    # run.text on a run that holds a <w:drawing> wipes the figure.
+    def _strip_dashes(runs):
+        for run in runs:
+            t = run.text
+            if t and ('\u2013' in t or '\u2014' in t):
+                run.text = t.replace('\u2013', '-').replace('\u2014', '-')
     for para in doc.paragraphs:
-        for run in para.runs:
-            run.text = (run.text
-                        .replace('\u2013', '-')
-                        .replace('\u2014', '-'))
+        _strip_dashes(para.runs)
     for tbl in doc.tables:
         for row in tbl.rows:
             for cell in row.cells:
                 for para in cell.paragraphs:
-                    for run in para.runs:
-                        run.text = (run.text
-                                    .replace('\u2013', '-')
-                                    .replace('\u2014', '-'))
+                    _strip_dashes(para.runs)
 
     doc.save(str(OUT))
     print(f"[DONE] Saved: {OUT}")
@@ -1121,9 +1122,12 @@ def build():
     print(f"  Limitations section   : {lim}  {'PASS' if lim >= 1 else 'FAIL'}")
     deg = full_text.count("degenerate")
     print(f"  Degenerate-feature    : {deg}  {'PASS' if deg >= 1 else 'FAIL'}")
-    # Count embedded images
-    img_count = sum(1 for r in d2.part.rels.values() if "image" in r.reltype)
-    print(f"  Embedded images       : {img_count}  {'PASS' if img_count >= 9 else 'WARN (expected 9)'}")
+    # Count actual placed images via XML
+    import zipfile as _zf
+    with _zf.ZipFile(str(OUT)) as _z:
+        _xml = _z.read('word/document.xml').decode('utf-8')
+    img_count = _xml.count('<w:drawing')
+    print(f"  Placed images (w:drawing): {img_count}  {'PASS' if img_count >= 9 else 'FAIL (expected 9)'}")
 
 if __name__ == "__main__":
     build()
