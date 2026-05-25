@@ -1,0 +1,2 @@
+Comparison,AUC_A,AUC_B,Delta_AUC,Permutation_p_value,Null_Delta_CI_95,Permutations,Test_Type,Note
+LR vs Random Forest,0.981,0.955,0.0259,4.9995e-04,"[-0.0159, 0.0160]",10000,two-sided permutation,LR is reference; AUC_B = RF

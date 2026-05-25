@@ -1,6 +1,6 @@
 Model,Calibration_Method,ECE_before_calibration,ECE_after_calibration
-Logistic Regression,N/A,0.1827,0.1827
-Random Forest,N/A,0.3647,0.3647
+Logistic Regression,Platt (sigmoid),0.0416,0.0552
+Random Forest,Platt (sigmoid),0.0912,0.0664
 CNN (scratch),temperature(T=0.60),0.4475,0.1747
 ResNet-18 (scratch),temperature(T=0.65),0.3777,0.1723
 ResNet-18 (pretrained),temperature(T=0.70),0.2672,0.0571

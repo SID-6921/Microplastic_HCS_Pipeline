@@ -1,0 +1,5 @@
+Model,Feature Regime,N Features,Macro AUC
+Logistic Regression,All 17 features,17,0.9809
+Logistic Regression,Without dominant feature,16,0.8607
+Random Forest,All 17 features,17,0.9722
+Random Forest,Without dominant feature,16,0.8723
