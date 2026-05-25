@@ -24,7 +24,7 @@ from sklearn.metrics import roc_auc_score, brier_score_loss
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, label_binarize
 
-ROOT   = Path(__file__).resolve().parent
+ROOT   = Path(__file__).resolve().parent.parent  # repo root (script lives in scripts/)
 TABLES = ROOT / "results" / "tables"
 SEED   = 42
 N_CLASSES = 4
