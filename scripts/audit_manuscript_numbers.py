@@ -91,7 +91,9 @@ FORBIDDEN = [
     "Department, Institution",         # placeholder affiliation
     "email@institution.edu",           # placeholder email
     "0.961 to 0.887",                  # stale ablation prose (Table 4 row is 0.9724 -> 0.8698)
+    "0.972 to 0.870",                  # stale RF ablation prose (canonical is 0.872 from Table 10)
     "10\u207b\u00b9\u2077\u00b0",      # corrupted exponent: degree sign instead of superscript zero
+    "[8,9,19,27,28]",                  # Table 11 note over-cited; canonical refs are [8,9,19]
     # Note: 'o (100 nm)' truncation in Table 7 is enforced by patch_proofreading_v4.py;
     # not added here because it would substring-match the correct 'nano (100 nm)'.
 ]
@@ -199,7 +201,7 @@ def main() -> int:
 
     print("\n[H] Structural anchors")
     anchors = {
-        "Title":                      "Feature-Based Models Outperform Deep Learning",
+        "Title":                      "Logistic Regression Achieves Superior Cross-Validated Stability",
         "Section 4.7 marker":         "Broader significance",
         "Section 4.8 marker":         "deployment roadmap",
         "Table 11 marker":            "Table\u202f11",
